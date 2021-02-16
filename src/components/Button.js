@@ -5,7 +5,6 @@ const Button = ({outline,className,children}) => {
     return (
 
       <button
-        onClick={()=>alert('hello')}
         className={classNames('button',className, {'button--outline': outline})}
       >
           {children}
