@@ -1,14 +1,20 @@
-import  React from 'react'
+import React from 'react'
 
-const Categories= ({items}) => {
+const Categories = ({items, changeCat}) => {
+    const [activeItem, setActiveItem] = React.useState(0)
 
     return (
       <div className="categories">
           <ul>
-              <li className="active">Все</li>
-              {items.map((item)=>{
+              {items.map((item, idx) => {
                   return (
-                    <li>{item}</li>
+                    <li
+                      className={(activeItem === idx) ? 'active' : null}
+                      onClick={() => setActiveItem(idx)}
+                      key={`${item}+${idx}`}
+                    >
+                        {item}
+                    </li>
                   )
               })}
           </ul>
@@ -16,4 +22,5 @@ const Categories= ({items}) => {
     )
 }
 
-export  default  Categories
+export default Categories
+

@@ -2,15 +2,16 @@ import {Header,Categories} from "./components";
 
 
 const App = () => {
+
     return (
       <div className="wrapper">
           <Header/>
           <div className="content">
               <div className="container">
                   <div className="content__top">
-                      <Categories items={[
-                        'Мясные', "Вегетарианские","Гриль", "Острые", "Закрытые"
-                      ]}/>
+                      <Categories
+                        changeCat={(name)=>console.log(name)}
+                        items={['Все','Мясные', "Вегетарианские","Гриль", "Острые", "Закрытые"]}/>
                       <div className="sort">
                           <div className="sort__label">
                               <svg
