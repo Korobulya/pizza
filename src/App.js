@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import {Route} from "react-router-dom";
 
-
 const App = () => {
 
     const [pizzas, setPizzas] = React.useState([])
