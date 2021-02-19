@@ -13,9 +13,9 @@ const App = () => {
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-        fetch('http://localhost:3000/db.json')
+        fetch('http://localhost:3001/pizzas')
           .then(res => res.json())
-          .then(data => dispatch(setPizzas(data.pizzas)))
+          .then(data => dispatch(setPizzas(data)))
     }, [])
 
     return (
