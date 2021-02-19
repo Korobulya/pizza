@@ -1,20 +1,22 @@
 import React from 'react'
+import {Route} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+
 import {Header} from "./components";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import {Route} from "react-router-dom";
+
+import {setPizzas} from './redux/actions/pizzas'
 
 const App = () => {
 
-    const [pizzas, setPizzas] = React.useState([])
-
+    const dispatch = useDispatch();
+    const items = useSelector()
     React.useEffect(() => {
         fetch('http://localhost:3000/db.json')
           .then(res => res.json())
-          .then(data => setPizzas(data.pizzas))
+          .then(data => dispatch(setPizzas(data.pizzas)))
     }, [])
-
-
 
     return (
       <div className="wrapper">
@@ -24,7 +26,7 @@ const App = () => {
                 path='/'
                 exact
                 render={() =>
-                  <Home items={pizzas}/>
+                  <Home items={[]}/>
                 }/>
               <Route path='/cart/' component={Cart}/>
           </div>
@@ -32,4 +34,21 @@ const App = () => {
     )
 }
 
-export default App;
+//
+// const mapStateToProps = (state) => {
+//     return {
+//         items: state.pizzas.items
+//          filter: state.filters
+//     }
+// }
+//
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         setPizzas: (items)=>dispatch(setPizzasAction(items))
+//     }
+// }
+//
+// export default connect(mapStateToProps,mapDispatchToProps)(App);
+
+
+export default App
