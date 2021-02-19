@@ -1,10 +1,12 @@
 import React from 'react'
+import {useDispatch} from "react-redux";
 
-const Categories = ({items}) => {
+const Categories = ({items, onClickItem}) => {
     const [activeItem, setActiveItem] = React.useState(null)
 
     const onSelectItems = (idx) => {
         setActiveItem(idx)
+        onClickItem(idx)
     }
 
     return (
@@ -32,7 +34,7 @@ const Categories = ({items}) => {
     )
 }
 
-export default Categories
+export default React.memo(Categories)
 
 
 
