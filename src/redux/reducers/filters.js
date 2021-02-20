@@ -1,5 +1,3 @@
-import {act} from "@testing-library/react";
-
 const initialState = {
     category: 0,
     sortBy: 'popular',
