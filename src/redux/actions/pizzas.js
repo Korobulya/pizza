@@ -5,11 +5,17 @@ export const setPizzas = (items) => {
     }
 }
 
+export const setLoaded = (bool) => ({
+    type: "SET_LOADED",
+    payload: bool
+})
+
 export const fetchPizzas = () => {
     return (dispatch) => {
+        dispatch(setLoaded(false))
         fetch('http://localhost:3001/pizzas')
-          .then(res => res.json())
-          .then(data => dispatch(setPizzas(data)))
+            .then(res => res.json())
+            .then(data => dispatch(setPizzas(data)))
     }
 }
 
