@@ -10,11 +10,12 @@ export const setLoaded = (bool) => ({
     payload: bool
 })
 
-export const fetchPizzas = (sortBy,category) => {
-    console.log(sortBy,category)
+export const fetchPizzas = (sortBy, category) => {
     return (dispatch) => {
         dispatch(setLoaded(false))
-        fetch(`http://localhost:3001/pizzas?category=${category}&`)
+        fetch(`http://localhost:3001/pizzas?${
+             category !==null  ? `category=${category}`:''
+        }&_sort=${sortBy.type}&_order=${sortBy.order}`)
             .then(res => res.json())
             .then(data => dispatch(setPizzas(data)))
     }

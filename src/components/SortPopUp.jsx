@@ -5,7 +5,6 @@ const SortPopUp = ({items,activeSortType,onSelectSortPopup}) => {
     const sortRef = React.useRef()
     const activeLabel = items.find((obj)=>obj.type === activeSortType).name
 
-
     const toggleVisiblePopUp = () => {
         setVisiblePopUp(v => !v)
     }
@@ -55,7 +54,7 @@ const SortPopUp = ({items,activeSortType,onSelectSortPopup}) => {
                       return (
                         <li
                           className={(activeSortType === obj.type) ? 'active' : null}
-                          onClick={() => onSelectItems(obj.type)}
+                          onClick={() => onSelectItems(obj)}
                           key={`${obj.type}+${idx}`}
                         >
                             {obj.name}
