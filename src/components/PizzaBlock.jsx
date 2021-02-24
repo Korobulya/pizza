@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Loader from "./Loader";
 
 
 const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
+
     const [activeType, setActiveType] = React.useState(types[0])
-    const [activeSize, setActiveSize] = React.useState(sizes[0])
+    const [activeSize, setActiveSize] = React.useState(sizes[0]);
 
     const aviableTypes = ['тонкое', 'традиционное']
     const availbleSizes = [26, 30, 40]
@@ -95,11 +95,11 @@ PizzaBlock.propTypes = {
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
-PizzaBlock.defaultProps={
+PizzaBlock.defaultProps = {
     name: 'TEST',
     imageUrl: 'default',
     price: 900,
-    types: [1,2],
-    sizes: [26,40],
+    types: [1, 2],
+    sizes: [26, 40],
 }
 export default PizzaBlock

@@ -1,28 +1,22 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
+import PropTypes from 'prop-types'
 
-const Categories = ({items, onClickItem}) => {
-    const [activeItem, setActiveItem] = React.useState(null)
-
-    const onSelectItems = (idx) => {
-        setActiveItem(idx)
-        onClickItem(idx)
-    }
+const Categories = ({activeCategory, items, onClickItem}) => {
 
     return (
       <div className="categories">
           <ul>
               <li
-                className={(activeItem === null) ? 'active' : null}
-                onClick={() => setActiveItem(null)}
+                className={(activeCategory === null) ? 'active' : null}
+                onClick={() => onClickItem(null)}
               >
                   Все
               </li>
               {items.map((item, idx) => {
                   return (
                     <li
-                      className={(activeItem === idx) ? 'active' : null}
-                      onClick={() => onSelectItems(idx)}
+                      className={(activeCategory === idx) ? 'active' : null}
+                      onClick={() => onClickItem(idx)}
                       key={`${item}+${idx}`}
                     >
                         {item}
@@ -33,6 +27,12 @@ const Categories = ({items, onClickItem}) => {
       </div>
     )
 }
+
+Categories.propTypes = {
+    onClickCategory: PropTypes.func
+}
+
+Categories.defaultProps = {activeCategory: null, items: []}
 
 export default React.memo(Categories)
 
