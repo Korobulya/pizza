@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import Button from "./Button";
 
 
-const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
+const aviableTypes = ['тонкое', 'традиционное']
+const availbleSizes = [26, 30, 40]
 
+
+const PizzaBlock = ({id, name, imageUrl, price, types, sizes, onClickAddPizza}) => {
     const [activeType, setActiveType] = React.useState(types[0])
-    const [activeSize, setActiveSize] = React.useState(sizes[0]);
-
-    const aviableTypes = ['тонкое', 'традиционное']
-    const availbleSizes = [26, 30, 40]
-
+    const [activeSize, setActiveSize] = React.useState(0);
 
     const onSelectItem = (idx) => {
         setActiveType(idx)
@@ -20,6 +20,17 @@ const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
         setActiveSize(idx)
     }
 
+    const onAddPizza = () => {
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size: availbleSizes[activeSize],
+            type: aviableTypes[activeType]
+        }
+        onClickAddPizza(obj)
+    }
 
     return (
       <div className="pizza-block">
@@ -66,7 +77,7 @@ const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
           </div>
           <div className="pizza-block__bottom">
               <div className="pizza-block__price">от {price} ₽</div>
-              <div className="button button--outline button--add">
+              <Button onClick={onAddPizza} className="button--add" outline>
                   <svg
                     width="12"
                     height="12"
@@ -81,7 +92,7 @@ const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
                   </svg>
                   <span>Добавить</span>
                   <i>2</i>
-              </div>
+              </Button>
           </div>
       </div>
     )
@@ -99,7 +110,7 @@ PizzaBlock.defaultProps = {
     name: 'TEST',
     imageUrl: 'default',
     price: 900,
-    types: [1, 2],
-    sizes: [26, 40],
+    types: [],
+    sizes: [],
 }
 export default PizzaBlock

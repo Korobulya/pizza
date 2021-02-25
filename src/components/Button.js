@@ -1,10 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
 
-const Button = ({outline,className,children}) => {
+const Button = ({onClick,outline,className,children}) => {
     return (
 
       <button
+        onClick={onClick}
         className={classNames('button',className, {'button--outline': outline})}
       >
           {children}
