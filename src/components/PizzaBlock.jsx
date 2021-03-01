@@ -107,4 +107,4 @@ PizzaBlock.propTypes = {
     addedCount:PropTypes.number
 }
 
-export default PizzaBlock
+export default React.memo(PizzaBlock)
