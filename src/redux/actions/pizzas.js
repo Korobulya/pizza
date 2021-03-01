@@ -13,7 +13,7 @@ export const setLoaded = (bool) => ({
 export const fetchPizzas = (sortBy, category) => {
     return (dispatch) => {
         dispatch(setLoaded(false))
-        fetch(`http://localhost:3001/pizzas?${
+        fetch(`/pizzas?${
              category !==null  ? `category=${category}`:''
         }&_sort=${sortBy.type}&_order=${sortBy.order}`)
             .then(res => res.json())

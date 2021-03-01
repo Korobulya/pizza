@@ -8,7 +8,7 @@ const aviableTypes = ['тонкое', 'традиционное']
 const availbleSizes = [26, 30, 40]
 
 
-const PizzaBlock = ({id, name, imageUrl, price, types, sizes, onClickAddPizza}) => {
+const PizzaBlock = ({id, name, imageUrl, price, types, sizes, onClickAddPizza,addedCount}) => {
     const [activeType, setActiveType] = React.useState(types[0])
     const [activeSize, setActiveSize] = React.useState(0);
 
@@ -91,7 +91,7 @@ const PizzaBlock = ({id, name, imageUrl, price, types, sizes, onClickAddPizza}) 
                       />
                   </svg>
                   <span>Добавить</span>
-                  <i>2</i>
+                  {addedCount&&<i>{addedCount}</i>}
               </Button>
           </div>
       </div>
@@ -104,13 +104,7 @@ PizzaBlock.propTypes = {
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+    addedCount:PropTypes.number
 }
 
-PizzaBlock.defaultProps = {
-    name: 'TEST',
-    imageUrl: 'default',
-    price: 900,
-    types: [],
-    sizes: [],
-}
 export default PizzaBlock
